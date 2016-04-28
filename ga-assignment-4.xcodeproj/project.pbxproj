@@ -14,6 +14,9 @@
 		3E042A971CD0DDD10054C0F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E042A951CD0DDD10054C0F3 /* LaunchScreen.storyboard */; };
 		3E042AA21CD0DDD10054C0F3 /* ga_assignment_4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E042AA11CD0DDD10054C0F3 /* ga_assignment_4Tests.swift */; };
 		3E042AAD1CD0DDD10054C0F3 /* ga_assignment_4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E042AAC1CD0DDD10054C0F3 /* ga_assignment_4UITests.swift */; };
+		3E4862871CD0FD650072D563 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4862861CD0FD650072D563 /* TableViewCell.swift */; };
+		3E82F3C81CD20DFF001517B7 /* PairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82F3C71CD20DFF001517B7 /* PairViewController.swift */; };
+		3E82F3CA1CD20F83001517B7 /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82F3C91CD20F83001517B7 /* TableViewCell2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		3E042AA81CD0DDD10054C0F3 /* ga-assignment-4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ga-assignment-4UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E042AAC1CD0DDD10054C0F3 /* ga_assignment_4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ga_assignment_4UITests.swift; sourceTree = "<group>"; };
 		3E042AAE1CD0DDD10054C0F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E4862861CD0FD650072D563 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		3E82F3C71CD20DFF001517B7 /* PairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairViewController.swift; sourceTree = "<group>"; };
+		3E82F3C91CD20F83001517B7 /* TableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 			children = (
 				3E042A8C1CD0DDD10054C0F3 /* AppDelegate.swift */,
 				3E042A8E1CD0DDD10054C0F3 /* ViewController.swift */,
+				3E4862861CD0FD650072D563 /* TableViewCell.swift */,
+				3E82F3C71CD20DFF001517B7 /* PairViewController.swift */,
+				3E82F3C91CD20F83001517B7 /* TableViewCell2.swift */,
 				3E042A901CD0DDD10054C0F3 /* Main.storyboard */,
 				3E042A931CD0DDD10054C0F3 /* Assets.xcassets */,
 				3E042A951CD0DDD10054C0F3 /* LaunchScreen.storyboard */,
@@ -256,7 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E82F3CA1CD20F83001517B7 /* TableViewCell2.swift in Sources */,
+				3E4862871CD0FD650072D563 /* TableViewCell.swift in Sources */,
 				3E042A8F1CD0DDD10054C0F3 /* ViewController.swift in Sources */,
+				3E82F3C81CD20DFF001517B7 /* PairViewController.swift in Sources */,
 				3E042A8D1CD0DDD10054C0F3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +496,7 @@
 				3E042AB31CD0DDD10054C0F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3E042AB41CD0DDD10054C0F3 /* Build configuration list for PBXNativeTarget "ga-assignment-4Tests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +505,7 @@
 				3E042AB61CD0DDD10054C0F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3E042AB71CD0DDD10054C0F3 /* Build configuration list for PBXNativeTarget "ga-assignment-4UITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +514,7 @@
 				3E042AB91CD0DDD10054C0F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
