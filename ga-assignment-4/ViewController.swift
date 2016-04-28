@@ -30,6 +30,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         txtInput.resignFirstResponder()
         addNewItem(txtInput.text!)
+        txtInput.text=""
         tblView.reloadData()
         return true
     }
