@@ -11,7 +11,7 @@ import UIKit
 
 class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate{
     
-    var result: [String] = []
+    var myDictionary: [String: String] = [String: String]()
     
     @IBOutlet weak var txtPair1: UITextField!
     @IBOutlet weak var txtPair2: UITextField!
@@ -34,28 +34,39 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        if let pair1 = txtPair1.text, pair2 = txtPair2.text{
-            addNewItem("\(pair1) - \(pair2)")
+        
+        if txtPair1.text! != "" && txtPair2.text! != "" {
+            addDictionary(txtPair1.text!, value: txtPair2.text!)
+        }
+        else{
+            let alert = UIAlertController(title: "Warning", message: "Please fill out both Key and Value field", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         tblView.reloadData()
         return true
     }
     
-    func addNewItem(input: String){
-        result.append(input)
+    func addDictionary(key: String,value: String){
+        myDictionary[key]=value
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return result.count
+        return myDictionary.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell2", forIndexPath: indexPath)
         
         if let cell = cell as? TableViewCell2{
-            cell.lblPairs.text=result[indexPath.row]
+            
+            // This method extracts all values in the Dictionary and put it into a temporary array
+            var tempArray: [String] = []
+            for (key, value) in myDictionary {
+                tempArray.append("\(key) - \(value)")
+            }
+            cell.lblPairs.text=tempArray[indexPath.row]
         }
-        
         return cell
     }
 
