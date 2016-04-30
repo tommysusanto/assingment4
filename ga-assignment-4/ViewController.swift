@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var txtInput: UITextField!
     @IBOutlet weak var tblView: UITableView!
@@ -18,6 +18,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate
         super.viewDidLoad()
         tblView.dataSource=self
         txtInput.delegate=self
+        formatBar()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -27,6 +28,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    // This function is called when "return" button is pressed
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         txtInput.resignFirstResponder()
         addNewItem(txtInput.text!)
@@ -35,19 +37,26 @@ class ViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate
         return true
     }
     
-    
+    // This adds new item into the array
     func addNewItem(input: String){
-        result.append(input)
+        if input != "" {
+            result.append(input)
+        }
+        else {
+            let alert = UIAlertController(title: "Warning", message: "You cannot leave textfield blank", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
     
-    func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return nil
-    }
-    
+    //These functions populate data into cells
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return result.count
     }
@@ -61,6 +70,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate
         return cell
     }
     
+    //These functions delete selected row (Swipe left)
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
@@ -71,6 +81,14 @@ class ViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate
             result.removeAtIndex(indexPath.row)
             tblView.reloadData()
         }
+    }
+    
+    //Formatting Navigation Bar
+    func formatBar(){
+        //Navigation Controller Color setup
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 41/255, blue: 67/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.init(red: 255/255, green: 255/255, blue: 255.255, alpha: 1)]
     }
 
 

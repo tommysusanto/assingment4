@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDelegate{
+class PairViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate{
     
     var myDictionary: [String: String] = [String: String]()
     
@@ -34,7 +34,7 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // This function is called when return key button is clicked
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
@@ -45,7 +45,7 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
             txtPair2.text=""
         }
         else{
-            let alert = UIAlertController(title: "Warning", message: "Please fill out both Key and Value field", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Warning", message: "Please enter both Key and Value field", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -57,6 +57,14 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         myDictionary[key]=value
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    //These functions populate data into cells
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return myDictionary.count
     }
@@ -76,6 +84,7 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         return cell
     }
     
+    //These functions format texfields if keyboard is shown / hidden on screen
     func keyboardWillAppear() {
         txtPair1.backgroundColor=UIColor.blueColor()
         txtPair2.backgroundColor=UIColor.blueColor()
@@ -84,13 +93,13 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
     }
     
     func keyboardWillHide() {
-        txtPair1.backgroundColor=UIColor.redColor()
-        txtPair2.backgroundColor=UIColor.redColor()
+        txtPair1.backgroundColor=UIColor(red: 255/255, green: 41/255, blue: 67/255, alpha: 1)
+        txtPair2.backgroundColor=UIColor(red: 255/255, green: 41/255, blue: 67/255, alpha: 1)
         txtPair1.textColor=UIColor.whiteColor()
         txtPair2.textColor=UIColor.whiteColor()
     }
     
-    // This part deletes selected cell in the list.
+    // These functions delete selected row (swipe left)
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
