@@ -22,11 +22,9 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         txtPair1.delegate=self
         txtPair2.delegate=self
         tblView.dataSource=self
-        
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PairViewController.keyboardWillAppear), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PairViewController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
-        
-
     }
     
     
@@ -78,8 +76,6 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         return cell
     }
     
-    
-    
     func keyboardWillAppear() {
         txtPair1.backgroundColor=UIColor.blueColor()
         txtPair2.backgroundColor=UIColor.blueColor()
@@ -92,6 +88,24 @@ class PairViewController: UIViewController,UITableViewDataSource,UITextFieldDele
         txtPair2.backgroundColor=UIColor.redColor()
         txtPair1.textColor=UIColor.whiteColor()
         txtPair2.textColor=UIColor.whiteColor()
+    }
+    
+    // This part deletes selected cell in the list.
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            
+            var tempArray: [String] = []
+            for (key,_) in myDictionary {
+                tempArray.append("\(key)")
+            }
+            myDictionary.removeValueForKey(tempArray[indexPath.row])
+            tblView.reloadData()
+        }
     }
 
     
