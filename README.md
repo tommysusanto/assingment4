@@ -1,6 +1,8 @@
 # assingment4
 
 Assignment 4:
+https://github.com/tommysusanto/assingment4.git
+
 All requirements are implemented
 Please make sure Software Keyboard is turned on in Simulator (Command+K)
 Dictionary [String: String] is implemented on second screen
